@@ -18,7 +18,21 @@ app.use(cors({
   optionsSuccessStatus: 200
 }));
 
-const port = 5000;
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    return val;
+  }
+
+  if (port >= 0) {
+    return port;
+  }
+
+  return false;
+}
+
+const port = normalizePort(process.env.PORT || '5000');
 
 app.listen(port, (error) => {
   if (error) { //handle error
